@@ -14,6 +14,13 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload }) =
       return;
     }
 
+    // Check file size (5MB limit)
+    const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+    if (file.size > maxSize) {
+      alert('File size must be less than 5MB');
+      return;
+    }
+
     const reader = new FileReader();
     reader.onload = (e) => {
       if (typeof e.target?.result === 'string') {

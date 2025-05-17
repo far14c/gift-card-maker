@@ -1,22 +1,7 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
-
-// Function to download and convert font to base64
-async function downloadFont(url: string): Promise<string> {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch font: ${response.statusText}`);
-    }
-    const buffer = await response.arrayBuffer();
-    const base64 = Buffer.from(buffer).toString('base64');
-    return `data:font/woff2;charset=utf-8;base64,${base64}`;
-  } catch (error) {
-    console.error(`Error downloading font from ${url}:`, error);
-    throw error;
-  }
-}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -31,4 +16,14 @@ export default defineConfig({
     }
   },
   assetsInclude: ['**/*.woff2'],
+  test: {
+    globals: true,
+    environment: 'happy-dom',
+    setupFiles: './src/test/setup.ts',
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+    },
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+  },
 });
