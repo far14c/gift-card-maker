@@ -1,4 +1,4 @@
-# Digital Gift Card Maker
+# Gift Card Maker
 
 A modern web application that allows users to create beautiful, personalized digital gift cards. Built with React and TypeScript, this project provides an intuitive interface for customizing and generating gift cards with custom backgrounds and messages.
 
@@ -24,7 +24,7 @@ A modern web application that allows users to create beautiful, personalized dig
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/gift-card-maker.git
+git clone https://github.com/far14c/gift-card-maker.git
 cd gift-card-maker
 ```
 
